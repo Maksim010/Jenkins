@@ -43,14 +43,17 @@ dependencies {
 test {
     useJUnitPlatform()
 
-    // Настройки Allure
     systemProperty 'allure.results.directory', 'build/allure-results'
 
-    // Указываем версию DevTools для Chrome 138
     systemProperty 'selenium.devTools.version', 'v138'
 
-    // Настройка логгирования
     systemProperty 'logback.configurationFile', file('src/test/resources/logback-test.xml').absolutePath
+}
+
+tasks.register('smoke_tests', Test) {
+    useJUnitPlatform {
+        includeTags("SMOKE")
+    }
 }
 
 allure {
