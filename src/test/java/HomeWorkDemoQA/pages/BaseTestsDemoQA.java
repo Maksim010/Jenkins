@@ -43,6 +43,7 @@ public class BaseTestsDemoQA {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+
         SelenideLogger.addListener("AllureListener" , new AllureSelenide());
     }
 

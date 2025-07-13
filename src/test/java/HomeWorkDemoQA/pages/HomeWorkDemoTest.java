@@ -8,6 +8,7 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static HomeWorkDemoQA.TestData.ADDRESS;
@@ -37,7 +38,10 @@ public class HomeWorkDemoTest extends BaseTestsDemoQA {
     @Feature("Форма регистрации")
     @Story("Пользователь регистрируется с указанием всех полей")
     @Owner("Maksim10")
-    @Tag("SMOKE")
+    @Tags({
+            @Tag("SMOKE"),
+            @Tag("WEB")
+    })
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Registration", url = BASE_URL + "/automation-practice-form")
     @DisplayName("Успешная регистрации с валидными данными")
@@ -71,6 +75,7 @@ public class HomeWorkDemoTest extends BaseTestsDemoQA {
     @Feature("Форма регистрации")
     @Story("Валидация номера")
     @Owner("Maksim10")
+    @Tag("WEB")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Registration", url = BASE_URL + "/automation-practice-form")
     @DisplayName("Поле номера подсвечивается красным при неверном формате")
@@ -90,6 +95,7 @@ public class HomeWorkDemoTest extends BaseTestsDemoQA {
     @Feature("Форма регистрации")
     @Story("Пользователь может зарегистрироваться без указания необязательных полей")
     @Owner("Maksim10")
+    @Tag("WEB")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Registration", url = BASE_URL + "/automation-practice-form")
     @DisplayName("Успешная регистрация с минимальными данными")
