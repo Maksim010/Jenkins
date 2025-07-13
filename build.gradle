@@ -17,7 +17,7 @@ dependencies {
     testImplementation 'com.codeborne:selenide:7.2.3'
 
     // WebDriverManager (управление драйверами)
-    implementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:6.1.0'
 
     // Utilities
     implementation 'commons-io:commons-io:2.19.0'
@@ -34,7 +34,6 @@ dependencies {
 
     // Logging (исправление SLF4J)
     implementation 'org.slf4j:slf4j-api:2.0.12'
-    testImplementation 'ch.qos.logback:logback-classic:1.4.14'  // Реализация Logback
 
     // AspectJ для Allure
     testImplementation 'org.aspectj:aspectjweaver:1.9.20.1'
@@ -45,9 +44,8 @@ test {
 
     systemProperty 'allure.results.directory', 'build/allure-results'
 
-    systemProperty 'wdm.chromeDriverVersion', '114.0.5735.90'
+    systemProperty 'wdm.chromeDriverVersion', '138.0.7045.106'
 
-    systemProperty 'logback.configurationFile', file('src/test/resources/logback-test.xml').absolutePath
 }
 
 tasks.register('smoke_tests', Test) {
