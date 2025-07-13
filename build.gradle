@@ -41,30 +41,20 @@ dependencies {
 test {
     useJUnitPlatform()
 
-    systemProperties = [
-            // Настройки Selenide
-            'selenide.browser': 'chrome',
-            'selenide.headless': 'true',
+    systemProperty "chromeoptions.args", """
+        --disable-dev-shm-usage
+        --no-sandbox
+        --window-size=1366,768
+        --remote-allow-origins=*
+        --incognito
+        --disable-application-cache
+        --disable-extensions
+        --disable-gpu
+    """.stripIndent().replaceAll("\n", " ")
 
-            // Альтернатива устаревшим wdm.* свойствам
-            'wdm.cachePath': "${layout.buildDirectory.get()}/webdriver_cache".toString(),
-            'wdm.forceDownload': 'true',
-
-            // Настройки Chrome
-            'chromeoptions.args': """
-            --disable-dev-shm-usage,
-            --no-sandbox,
-            --window-size=1366,768,
-            --remote-allow-origins=*,
-            --incognito
-        """.stripIndent().replaceAll("\n", " ")
-    ]
-
-    // Очистка кэша после тестов
+    // Принудительная очистка профилей Chrome после тестов
     doLast {
-        delete fileTree("${layout.buildDirectory.get()}/webdriver_cache") {
-            include '**/*'
-        }
+        delete "${System.getProperty('java.io.tmpdir')}/org.chromium.Chromium.*"
     }
 
     systemProperty 'allure.results.directory', 'build/allure-results'
