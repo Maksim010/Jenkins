@@ -13,11 +13,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.38'
 
     // Selenium
-    implementation 'org.seleniumhq.selenium:selenium-java:4.22.0'
-    testImplementation 'com.codeborne:selenide:7.2.3'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.34.0'
+    implementation 'org.seleniumhq.selenium:selenium-devtools-v138:4.34.0'
 
-    // WebDriverManager (управление драйверами)
-    implementation 'io.github.bonigarcia:webdrivermanager:6.1.0'
+    testImplementation 'com.codeborne:selenide:7.2.3'
 
     // Utilities
     implementation 'commons-io:commons-io:2.19.0'
@@ -42,30 +41,7 @@ dependencies {
 test {
     useJUnitPlatform()
 
-    systemProperties = [
-            // Основные настройки Selenide
-            "selenide.browser": "chrome",
-            "selenide.headless": "false", // или true для CI
-
-            // Решение проблемы с user-data-dir
-            "chromeoptions.args": """
-            --disable-dev-shm-usage,
-            --no-sandbox,
-            --window-size=1366,768,
-            --remote-allow-origins=*,
-            --user-data-dir=${buildDir}/chrome_profile/${UUID.randomUUID()}
-        """.stripIndent().replaceAll("\n", " "),
-
-            // Дополнительные настройки для стабильности
-            "selenide.holdBrowserOpen": "false",
-            "selenide.reportsFolder": "${buildDir}/reports/tests"
-    ]
-
     systemProperty 'allure.results.directory', 'build/allure-results'
-
-    systemProperty 'wdm.chromeDriverVersion', '138.0.7045.106'
-
-    systemProperty 'logback.configurationFile', file('src/test/resources/logback-test.xml').absolutePath
 }
 
 tasks.register('smoke_tests', Test) {
