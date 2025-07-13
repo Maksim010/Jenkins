@@ -14,13 +14,10 @@ dependencies {
 
     // Selenium
     implementation 'org.seleniumhq.selenium:selenium-java:4.34.0'
+    implementation 'org.seleniumhq.selenium:selenium-remote-driver:4.34.0'
     implementation 'org.seleniumhq.selenium:selenium-devtools-v138:4.34.0'
 
     testImplementation 'com.codeborne:selenide:7.2.3'
-
-    // Utilities
-    implementation 'commons-io:commons-io:2.19.0'
-    implementation 'com.google.code.gson:gson:2.12.1'
 
     // JUnit 5
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
@@ -40,22 +37,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
-
-    systemProperty "chromeoptions.args", """
-        --disable-dev-shm-usage
-        --no-sandbox
-        --window-size=1366,768
-        --remote-allow-origins=*
-        --incognito
-        --disable-application-cache
-        --disable-extensions
-        --disable-gpu
-    """.stripIndent().replaceAll("\n", " ")
-
-    // Принудительная очистка профилей Chrome после тестов
-    doLast {
-        delete "${System.getProperty('java.io.tmpdir')}/org.chromium.Chromium.*"
-    }
 
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
