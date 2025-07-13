@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+
+    // Selenium
+    implementation 'org.seleniumhq.selenium:selenium-java:4.22.0'
+    testImplementation 'com.codeborne:selenide:7.2.3'
+
+    // WebDriverManager (управление драйверами)
+    implementation 'io.github.bonigarcia:webdrivermanager:6.1.0'
+
+    // Utilities
+    implementation 'commons-io:commons-io:2.19.0'
+    implementation 'com.google.code.gson:gson:2.12.1'
+
+    // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.10.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
+
+    // Allure
+    testImplementation 'io.qameta.allure:allure-junit5:2.25.0'
+    testImplementation 'io.qameta.allure:allure-selenide:2.25.0'
+
+    // Logging (исправление SLF4J)
+    implementation 'org.slf4j:slf4j-api:2.0.12'
+    testImplementation 'ch.qos.logback:logback-classic:1.4.14'  // Реализация Logback
+
+    // AspectJ для Allure
+    testImplementation 'org.aspectj:aspectjweaver:1.9.20.1'
+}
+
+test {
+    useJUnitPlatform()
+
+    // Настройки Allure
+    systemProperty 'allure.results.directory', 'build/allure-results'
+
+    // Указываем версию DevTools для Chrome 138
+    systemProperty 'selenium.devTools.version', 'v138'
+
+    // Настройка логгирования
+    systemProperty 'logback.configurationFile', file('src/test/resources/logback-test.xml').absolutePath
+}
+
+allure {
+    version = '2.25.0'
+
+    useJUnit5 {
+        version = '2.25.0'
+    }
+}
