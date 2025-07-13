@@ -44,6 +44,7 @@ test {
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
 
+
 tasks.register('smoke_tests', Test) {
     useJUnitPlatform {
         includeTags("SMOKE")
