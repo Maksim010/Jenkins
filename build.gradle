@@ -42,10 +42,22 @@ dependencies {
 test {
     useJUnitPlatform()
 
+    systemProperties = [
+            "selenide.browser": "chrome",
+            "chromeoptions.args": """
+            --disable-dev-shm-usage,
+            --no-sandbox,
+            --window-size=1366,768,
+            --remote-allow-origins=*,
+            --incognito
+        """.stripIndent().replaceAll("\n", " ")
+    ]
+
     systemProperty 'allure.results.directory', 'build/allure-results'
 
     systemProperty 'wdm.chromeDriverVersion', '138.0.7045.106'
 
+    systemProperty 'logback.configurationFile', file('src/test/resources/logback-test.xml').absolutePath
 }
 
 tasks.register('smoke_tests', Test) {
