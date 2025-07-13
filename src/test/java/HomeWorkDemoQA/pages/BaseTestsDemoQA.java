@@ -9,9 +9,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.util.UUID;
 
 import static HomeWorkDemoQA.TestData.BASE_URL;
 import static HomeWorkDemoQA.TestData.BROWSER;
@@ -35,14 +32,6 @@ public class BaseTestsDemoQA {
         Configuration.pageLoadTimeout = PAGE_LOAD_TIMEOUT;
         Configuration.holdBrowserOpen = false;
         Configuration.timeout = TIMEOUT;
-        Configuration.browserCapabilities = new ChromeOptions()
-                .addArguments(
-                        "--disable-dev-shm-usage",
-                        "--no-sandbox",
-                        "--window-size=1366,768",
-                        "--remote-allow-origins=*",
-                        "--user-data-dir=" + System.getProperty("java.io.tmpdir") + "/chrome_profiles/" + UUID.randomUUID()
-                );
         SelenideLogger.addListener("AllureListener" , new AllureSelenide());
     }
 
