@@ -36,7 +36,7 @@ public class BaseTestsDemoQA {
         Configuration.pageLoadTimeout = PAGE_LOAD_TIMEOUT;
         Configuration.holdBrowserOpen = false;
         Configuration.timeout = TIMEOUT;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = "https://user1:1234" + System.getProperty("selenoid", "selenoid.autotests.cloud") + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -61,6 +61,7 @@ public class BaseTestsDemoQA {
     public void tearDown() {
         Attach.screenshotAs("Last screenshot");
         Attach.addVideo();
+        Attach.pageSource();
         Attach.browserConsoleLogs();
         Selenide.closeWebDriver();
     }

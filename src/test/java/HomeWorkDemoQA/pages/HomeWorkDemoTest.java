@@ -43,7 +43,6 @@ public class HomeWorkDemoTest extends BaseTestsDemoQA {
             @Tag("WEB")
     })
     @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Registration", url = BASE_URL + "/automation-practice-form")
     @DisplayName("Успешная регистрации с валидными данными")
     void successfulFullRegistration() {
         registrationPage
@@ -77,7 +76,6 @@ public class HomeWorkDemoTest extends BaseTestsDemoQA {
     @Owner("Maksim10")
     @Tag("WEB")
     @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Registration", url = BASE_URL + "/automation-practice-form")
     @DisplayName("Поле номера подсвечивается красным при неверном формате")
     void unsuccessfulMandatoryRegistration() {
         registrationPage
@@ -97,7 +95,6 @@ public class HomeWorkDemoTest extends BaseTestsDemoQA {
     @Owner("Maksim10")
     @Tag("WEB")
     @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Registration", url = BASE_URL + "/automation-practice-form")
     @DisplayName("Успешная регистрация с минимальными данными")
     void onlyMandatorySuccessfulRegistration() {
         registrationPage
