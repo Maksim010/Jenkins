@@ -1,5 +1,6 @@
 package HomeWorkDemoQA.pages;
 
+import HomeWorkDemoQA.helpers.Attach;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -58,6 +59,9 @@ public class BaseTestsDemoQA {
 
     @AfterEach
     public void tearDown() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.addVideo();
+        Attach.browserConsoleLogs();
         Selenide.closeWebDriver();
     }
 }
