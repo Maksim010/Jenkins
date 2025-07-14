@@ -38,7 +38,11 @@ dependencies {
 test {
     useJUnitPlatform()
 
-    systemProperty(System.getProperties())
+    systemProperty 'browser', System.getProperty('browser', 'chrome')
+    systemProperty 'selenoid', System.getProperty('selenoid', 'selenoid.autotests.cloud')
+    systemProperty 'baseUrl', System.getProperty('baseUrl', 'https://demoqa.com')
+    systemProperty 'remote.url',
+            "https://user1:1234@${System.getProperty('selenoid', 'selenoid.autotests.cloud')}/wd/hub"
 
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
