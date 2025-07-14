@@ -1,4 +1,4 @@
-package HomeWorkDemoQA.pages;
+package HomeWorkDemoQA.baseTest;
 
 import HomeWorkDemoQA.helpers.Attach;
 import com.codeborne.selenide.Configuration;
@@ -23,7 +23,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 
-public class BaseTestsDemoQA {
+public class BaseTestsDemoFormQA {
 
     private static final String OPEN_AUTOMATION_PRACTICE_FORM_RELATIVE_URL = "/automation-practice-form";
     private static final SelenideElement PRACTICE_FORM_TEXT_SELECTOR = $(".text-center");

@@ -1,7 +1,8 @@
-package HomeWorkDemoQA.pages;
+package HomeWorkDemoQA;
 
+import HomeWorkDemoQA.baseTest.BaseTestsDemoFormQA;
+import HomeWorkDemoQA.pages.RegistrationPageWithPageObjectsTests;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -12,7 +13,6 @@ import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static HomeWorkDemoQA.TestData.ADDRESS;
-import static HomeWorkDemoQA.TestData.BASE_URL;
 import static HomeWorkDemoQA.TestData.CITY;
 import static HomeWorkDemoQA.TestData.FIRST_NAME;
 import static HomeWorkDemoQA.TestData.GENDER;
@@ -28,7 +28,7 @@ import static HomeWorkDemoQA.TestData.UNSUCCESSFUL_USER_NUMBER;
 import static HomeWorkDemoQA.TestData.USER_EMAIL;
 import static HomeWorkDemoQA.TestData.YEAR;
 
-public class HomeWorkDemoTest extends BaseTestsDemoQA {
+public class HomeWorkDemoFormTest extends BaseTestsDemoFormQA {
 
     private final RegistrationPageWithPageObjectsTests registrationPage =
             new RegistrationPageWithPageObjectsTests();

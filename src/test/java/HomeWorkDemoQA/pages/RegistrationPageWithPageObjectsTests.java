@@ -1,5 +1,6 @@
 package HomeWorkDemoQA.pages;
 
+import HomeWorkDemoQA.baseTest.BaseTestsDemoFormQA;
 import HomeWorkDemoQA.pages.components.CalendarComponent;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -13,7 +14,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class RegistrationPageWithPageObjectsTests extends BaseTestsDemoQA {
+public class RegistrationPageWithPageObjectsTests extends BaseTestsDemoFormQA {
 
     private static final SelenideElement FIRST_NAME_INPUT_SELECTOR = $("#firstName");
     private static final SelenideElement LAST_NAME_INPUT_SELECTOR = $("#lastName");
@@ -21,8 +22,6 @@ public class RegistrationPageWithPageObjectsTests extends BaseTestsDemoQA {
     private static final SelenideElement USER_NUMBER_INPUT_SELECTOR = $("#userNumber");
     private static final SelenideElement CURRENT_ADDRESS_INPUT_SELECTOR = $("#currentAddress");
     private static final SelenideElement GENDER_RADIO_SELECTOR = $("#genterWrapper");
-    private static final SelenideElement FEMALE_GENDER_RADIO_SELECTOR = $("#gender-radio-2");
-    private static final SelenideElement OTHER_GENDER_RADIO_SELECTOR = $("#gender-radio-3");
     private static final SelenideElement DATE_OF_BIRTH_INPUT_SELECTOR = $("#dateOfBirthInput");
     private static final SelenideElement MONTH_SELECTOR = $(".react-datepicker__month-select");
     private static final SelenideElement YEAR_SELECTOR = $(".react-datepicker__year-select");
