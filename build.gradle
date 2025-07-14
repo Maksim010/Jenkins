@@ -54,7 +54,7 @@ tasks.register('smoke_tests', Test) {
     }
 }
 
-tasks.register('tests', Test) {
+tasks.register('web_tests', Test) {
     useJUnitPlatform {
         includeTags("WEB")
     }
