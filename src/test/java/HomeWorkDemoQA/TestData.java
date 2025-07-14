@@ -5,8 +5,8 @@ import java.io.File;
 import static HomeWorkDemoQA.utils.RandomUtils.generateRandomString;
 
 public class TestData {
-    public static final String BASE_URL = "https://demoqa.com";
-    public static final String BROWSER = "chrome";
+    public static final String BASE_URL = System.getProperty("baseUrl", "https://demoqa.com");
+    public static final String BROWSER = System.getProperty("browser", "chrome");
     public static final int TIMEOUT = 15000;
     public static final int PAGE_LOAD_TIMEOUT = 20000;
 

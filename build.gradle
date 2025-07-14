@@ -38,6 +38,8 @@ dependencies {
 test {
     useJUnitPlatform()
 
+    systemProperty(System.getProperties())
+
     systemProperty 'allure.results.directory', 'build/allure-results'
 }
 
